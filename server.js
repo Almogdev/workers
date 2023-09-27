@@ -15,6 +15,9 @@ app.use(express.static(path.join(__dirname, "CSS")));
 var db_M = require('./database');
 global.db_pool = db_M.pool;
 
+const home = require('./routers/FE_R');
+app.use('/', home);
+
 const workersR = require('./routers/workersR');
 app.use('/workers', workersR);
 

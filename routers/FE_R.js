@@ -4,12 +4,6 @@ module.exports = router;
 
 router.get("/",(req, res) => {
 
-    res.render("", {pageTitle:"בוקר טוב"});
-
-});
-
-router.get("/Add",(req, res) => {
-
-    res.render("tasks", {});
+    res.render("home", {pageTitle:"בוקר טוב"});
 
 });
