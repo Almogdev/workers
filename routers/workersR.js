@@ -9,9 +9,8 @@ router.post("/Add",function(req,res){
     let first_name  =req.body.first_name;
     let last_name  =req.body.last_name;
 
-
-    let q='INSERT INTO `thems_tbl` ( `name`, `bg_color`, `text_color`) ';
-    q += `VALUES ( '${name}', '${bg_color}', '${text_color}')`;
+    let q='INSERT INTO `employees` ( `name1`, `name2`) ';
+    q += `VALUES ( '${first_name}', '${last_name}')`;
 
     db_pool.query(q, function(err, rows, fields){
 
