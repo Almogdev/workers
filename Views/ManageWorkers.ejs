@@ -1,24 +1,29 @@
 <%- include("top.ejs") %>
 <main>
+    <body>
     <link href="/CSS/style.css" rel="stylesheet" type="text/css">
-    <form action="/Add" method="post">
-        <input type="text" name="first_name"   id="first_name" placeholder="first_name"/> <br><br>
-        <input type="text" name="last_name"    id="last_name"   placeholder="last_name"/> <br><br>
+
+    <form action="/workers/Add" method="post">
+        <input type="text" name="name1"   id="first_name" placeholder= "Enter first name"/> <br><br>
+        <input type="text" name="name2"   id="last_name"   placeholder="Enter last name"/> <br><br>
         <button>send</button>
     </form>
-    <!--<script>
-        async function GetWorkers() {
-            let response = await fetch('workers/List');
-            // console.log("response=",response);
-            let data = await response.json();
-            console.log("data=",data);
-
-            let s='';
-            for(let row of data){
-                s+=`<option value="${row.id}">${row.name}</option>`;
-            }
-            document.getElementById("category_id").innerHTML=s;
+    </body>
+    <script>
+        async function AddLine(){
+            let name=document.getElementById("first_name").value;
+            let lastName=document.getElementById("last_name").value;
+            let response = await fetch('/workers/Add', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({first_name: name, last_name: lastName})
+                }
+            );
+            let jsn=await response.json();
+            console.log(jsn);
         }
-        GetWorkers();
-    </script>-->
+    </script>
+    <script src="/routers/workersR.js"></script>
 </main>

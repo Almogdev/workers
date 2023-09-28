@@ -3,25 +3,17 @@ const router = express.Router()
 module.exports = router;
 
 router.get("/",function (req, res){
-    res.render("ManageWorkers",{title: "hello"});
+    res.render("ManageWorkers",{});
 });
-router.post("/Add",function (req,res){
-    let {first_name,last_name} = req.body;
-    // let name        =req.body.name;
-    // let due_date    =req.body.due_date;
-    // let done_date   =req.body.done_date;
-    // let category_id =req.body.category_id;
-    // let owner_id    =req.body.owner_id;
-    // let creator_id  =req.body.creator_id;
+router.post("/Add",function(req,res){
+    let first_name  =req.body.first_name;
+    let last_name  =req.body.last_name;
 
-    // יצירת שאילתה לשמירת שורה
-    let Query = "INSERT INTO employees ";
-    Query += "(First Name, Last Name) ";
-    Query += " VALUES ";
-    Query += `('${first_name}','${last_name}') `;
-    console.log("Adding task",Query);
 
-    db_pool.query(Query, function(err, rows, fields){
+    let q='INSERT INTO `thems_tbl` ( `name`, `bg_color`, `text_color`) ';
+    q += `VALUES ( '${name}', '${bg_color}', '${text_color}')`;
+
+    db_pool.query(q, function(err, rows, fields){
 
         if(err){
             res.status(500).json({message: err})
@@ -31,7 +23,10 @@ router.post("/Add",function (req,res){
         }
 
     });
-})
+
+
+});
+
 
 /*router.get("/List",(req, res) => {
     let q = "SELECT * FROM 'employees'";
