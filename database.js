@@ -11,8 +11,6 @@ console.log("database.USER	=",USER	);
 console.log("database.PASSWORD=",PASSWORD);
 console.log("database.DATABASE=",DATABASE);
 
-
-
 const pool = mysql.createPool({
     host:		HOST		,
     user:		USER		,
@@ -26,7 +24,6 @@ const pool = mysql.createPool({
     enableKeepAlive: true,
     keepAliveInitialDelay: 0
 });
-
 
 module.exports = {
     pool:pool

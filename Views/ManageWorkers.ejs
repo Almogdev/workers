@@ -3,17 +3,18 @@
     <body>
     <link href="/CSS/style.css" rel="stylesheet" type="text/css">
 
-    <form action="/workers/Add" method="post">
+    <form action="/Add" method="post">
         <input type="text" name="name1"   id="first_name" placeholder= "Enter first name"/> <br><br>
         <input type="text" name="name2"   id="last_name"   placeholder="Enter last name"/> <br><br>
         <button>send</button>
     </form>
+
     </body>
     <script>
         async function AddLine(){
             let name=document.getElementById("first_name").value;
             let lastName=document.getElementById("last_name").value;
-            let response = await fetch('/workers/Add', {
+            let response = await fetch('/Add', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
