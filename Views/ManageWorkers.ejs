@@ -3,12 +3,27 @@
     <body>
     <link href="/CSS/style.css" rel="stylesheet" type="text/css">
 
-    <form action="/Add" method="post">
-        <input type="text" name="name1"   id="first_name" placeholder= "Enter first name"/> <br><br>
-        <input type="text" name="name2"   id="last_name"   placeholder="Enter last name"/> <br><br>
-        <button>send</button>
-    </form>
+    <button id="List">Click to see all workers</button><br><br>
 
+
+    <form action="/workers/Add" method="post">
+        <input type="text" name="name1"   id="first_name" placeholder= "Enter first name"/> <br>
+        <input type="text" name="name2"   id="last_name"   placeholder="Enter last name"/> <br>
+        <button onclick="AddLine();"> send </button>
+    </form>
+    <br><br>
+    <form action="/workers/Edit" method="post">
+        <input type="text" name="FNE" id="first_name_edit" placeholder="Enter first name to edit"><br>
+        <input type="text" name="LNE" id="last_name_edit" placeholder="Enter last name to edit"><br>
+        <button> send </button>
+    </form>
+    <br><br>
+    <form action="/workers/Delete" method="post">
+        <input type="text" name="FND" id="first_name_delete" placeholder="Enter first name to delete"><br>
+        <input type="text" name="LND" id="last_name_delete" placeholder="Enter last name to delete"><br>
+        <button> send </button>
+    </form>
+    <br><br>
     </body>
     <script>
         async function AddLine(){
@@ -25,6 +40,11 @@
             let jsn=await response.json();
             console.log(jsn);
         }
+        document.getElementById("List").addEventListener("click", function() {
+
+            const url = "http://localhost:3000/workers/List";
+            window.location.href = url;
+        });
     </script>
     <script src="/routers/workersR.js"></script>
 </main>

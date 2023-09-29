@@ -44,9 +44,30 @@ router.get("/List",(req, res) => {
         }
     });
 });
-router.get("/Edit",(req, res) => {
+router.post("/Edit",(req, res) => {
+    let first_name_edit = req.body.first_name_edit;
+    let last_name_edit  = req.body.last_name_edit;
 
-    let q="UPDATE `employees` SET `First_Name`='${first_name}',`Last_Name`='${last_name}'";
+    let q="UPDATE `employees` SET `First_Name`='${first_name_edit}',`Last_Name`='${last_name_edit}'";
+
+    db_pool.query(q, function(err, rows, fields){
+
+        if(err)
+        {
+            res.status(500).json({message: err})
+            // throw err;
+        }
+        else
+        {
+            res.status(200).json(rows );
+        }
+    });
+});
+router.post("/Delete",(req, res) => {
+    let first_name_delete = req.body.first_name_delete;
+    let last_name_delete  = req.body.last_name_delete;
+
+    let q="UPDATE `employees` SET `First_Name`='${first_name_delete}',`Last_Name`='${last_name_delete}'";
 
     db_pool.query(q, function(err, rows, fields){
 
@@ -63,4 +84,3 @@ router.get("/Edit",(req, res) => {
 });
 
 
-UPDATE `employees` SET `First_Name`='[value-1]',`Last_Name`='[value-2]'
