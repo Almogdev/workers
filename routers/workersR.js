@@ -87,4 +87,46 @@ router.post("/Delete",(req, res) => {
     });
 });
 
+router.post("/DutyON",(req, res) => {
+    let worker_id_duty = req.body.ID_ON;
+
+    let q = "UPDATE employees ";
+    q+= "SET On_Duty = CURRENT_DATE ";
+    q+= `WHERE employee_id = '${worker_id_duty}';`;
+
+    db_pool.query(q, function(err, rows){
+
+        if(err)
+        {
+            res.status(500).json({message: err})
+            // throw err;
+        }
+        else
+        {
+            res.status(200).json(rows );
+        }
+    });
+});
+
+router.post("/DutyOFF",(req, res) => {
+    let worker_id_duty = req.body.ID_OFF;
+
+    let q = "UPDATE employees ";
+    q+= "SET Off_Duty = CURRENT_DATE ";
+    q+= `WHERE employee_id = '${worker_id_duty}';`;
+
+    db_pool.query(q, function(err, rows){
+
+        if(err)
+        {
+            res.status(500).json({message: err})
+            // throw err;
+        }
+        else
+        {
+            res.status(200).json(rows );
+        }
+    });
+});
+
 
