@@ -68,7 +68,7 @@ router.post("/Edit",(req, res) => {
     });
 });
 router.post("/Delete",(req, res) => {
-    let worker_id = req.body.worker_id_delete;
+    let worker_id_delete = req.body.worker_id_delete;
 
     let q = "DELETE FROM employees ";
     q += `WHERE ID = '${worker_id_delete}'`;
@@ -91,7 +91,7 @@ router.post("/DutyON",(req, res) => {
     let worker_id_duty = req.body.ID_ON;
 
     let q = "UPDATE employees ";
-    q+= "SET On_Duty = CURRENT_DATE ";
+    q+= "SET On_Duty = CURRENT_TIME ";
     q+= `WHERE employee_id = '${worker_id_duty}';`;
 
     db_pool.query(q, function(err, rows){
@@ -112,7 +112,7 @@ router.post("/DutyOFF",(req, res) => {
     let worker_id_duty = req.body.ID_OFF;
 
     let q = "UPDATE employees ";
-    q+= "SET Off_Duty = CURRENT_DATE ";
+    q+= "SET Off_Duty = CURRENT_TIME ";
     q+= `WHERE employee_id = '${worker_id_duty}';`;
 
     db_pool.query(q, function(err, rows){
