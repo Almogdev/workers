@@ -54,7 +54,7 @@ router.post("/Edit",(req, res) => {
     q += `SET First_Name = '${first_name_edit}', Last_Name = '${last_name_edit}'`;
     q += ` WHERE ID = '${worker_id}'`;
 
-    db_pool.query(q, function(err, rows, fields){
+    db_pool.query(q, function(err, rows){
 
         if(err)
         {
@@ -71,9 +71,9 @@ router.post("/Delete",(req, res) => {
     let worker_id = req.body.worker_id_delete;
 
     let q = "DELETE FROM employees ";
-    q += `WHERE ID = '${worker_id}'`;
+    q += `WHERE ID = '${worker_id_delete}'`;
 
-    db_pool.query(q, function(err, rows, fields){
+    db_pool.query(q, function(err, rows){
 
         if(err)
         {
