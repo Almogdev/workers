@@ -65,11 +65,10 @@ router.post("/Edit",(req, res) => {
     });
 });
 router.post("/Delete",(req, res) => {
-    let worker_id         = req.body.worker_id;
-    let first_name_delete = req.body.first_name_delete;
-    let last_name_delete  = req.body.last_name_delete;
+    let worker_id = req.body.worker_id_delete;
 
-    let q="UPDATE `employees` SET `First_Name`='${first_name_delete}',`Last_Name`='${last_name_delete}'";
+    let q = "DELETE FROM employees ";
+    q += `WHERE ID = '${worker_id}'`;
 
     db_pool.query(q, function(err, rows, fields){
 
