@@ -31,7 +31,7 @@ router.get("/List",(req, res) => {
 
     let q="SELECT * FROM `employees` ";
 
-    db_pool.query(q, function(err, rows, fields){
+    db_pool.query(q, function(err, rows){
 
         if(err)
         {
@@ -44,12 +44,15 @@ router.get("/List",(req, res) => {
         }
     });
 });
+
 router.post("/Edit",(req, res) => {
     let worker_id       = req.body.worker_id;
     let first_name_edit = req.body.first_name_edit;
     let last_name_edit  = req.body.last_name_edit;
 
-    let q="UPDATE `employees` SET (`First_Name`='${first_name_edit}',`Last_Name`='${last_name_edit}') WHERE ID = '${worker_id}'";
+    let q = "UPDATE employees ";
+    q += `SET First_Name = '${first_name_edit}', Last_Name = '${last_name_edit}'`;
+    q += ` WHERE ID = '${worker_id}'`;
 
     db_pool.query(q, function(err, rows, fields){
 
